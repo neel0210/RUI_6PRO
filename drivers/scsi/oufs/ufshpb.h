@@ -46,8 +46,8 @@
 #include <scsi/scsi_cmnd.h>
 #include <scsi/scsi_driver.h>
 
-#include "../block/blk.h"
-#include "../drivers/scsi/scsi_priv.h"
+#include "../../../../block/blk.h"
+#include "../../../../drivers/scsi/scsi_priv.h"
 
 /* Version info*/
 #define UFSHPB_VER				0x0200

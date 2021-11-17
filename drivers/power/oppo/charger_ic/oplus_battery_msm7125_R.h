@@ -30,8 +30,8 @@
 /**************************************************/
 #ifdef VENDOR_EDIT
 /* lizhijie@BSP.CHG.Basic, 2020/02/25, lzj Add for charging */
-#include "../drivers/power/supply/qcom/storm-watch.h"
-#include "../drivers/power/supply/qcom/battery.h"
+#include "../../supply/qcom/storm-watch.h"
+#include "../../supply/qcom/battery.h"
 #include <linux/usb/typec.h>
 #include <linux/usb/usbpd.h>
 #endif
