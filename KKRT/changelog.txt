@@ -1,0 +1,14 @@
+#kernel #R #kernel #RUI2
+<b>Kakarot-Kernel for Realme6Pro</b>
+Maintainer: @Neel0210
+
+<b>Changelog</b>
+<code>• Kakarot initial kernel release
+• Some improvement in BB</code>
+
+<b>Note</b>
+• Flash everything at your own-risk
+
+<b>Support group</b>
+• @neelscosmos
+• @neelsdevelopment
