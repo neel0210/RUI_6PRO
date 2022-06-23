@@ -3,8 +3,7 @@
 Maintainer: @Neel0210
 
 <b>Changelog</b>
-<code>• Kakarot initial kernel release
-• Some improvement in BB</code>
+<code>• Initial kernel release for RUI</code>
 
 <b>Note</b>
 • Flash everything at your own-risk
