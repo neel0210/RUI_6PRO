@@ -4553,6 +4553,7 @@ CONFIG_OPPO_HANS=y
 # CONFIG_KS7010 is not set
 # CONFIG_GREYBUS is not set
 # CONFIG_CRYPTO_DEV_CCREE is not set
+# CONFIG_CRYPTO_DEV_QCOM_ICE is not set
 
 #
 # USB Power Delivery and Type-C drivers
