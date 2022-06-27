@@ -1,9 +1,9 @@
-#kernel #Realme6Pro #RMX2061 #RUI2
+#kernel #Realme6Pro #RMX2061 #RUI
 <b>Kakarot-Kernel for Realme6Pro</b>
 Maintainer: @Neel0210
 
 <b>Changelog</b>
-<code>• Kakarot release 1.1 🐉-for RUI2
+<code>• Kakarot release 1.1 🐉-for <b>RUI-2</b>
 • Fixed Fingerprint Issue
 • Added Kernel BatterySaver Mode
 • Added some I/O schedulers

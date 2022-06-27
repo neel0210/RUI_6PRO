@@ -1,0 +1,21 @@
+#kernel #Realme6Pro #RMX2061 #AOSP
+<b>Kakarot-Kernel for Realme6Pro</b>
+Maintainer: @Neel0210
+
+<b>Changelog</b>
+<code>• Kakarot release 1.1 🐉-for <b>AOSP</b>
+• Fixed Fingerprint Issue
+• Added Kernel BatterySaver Mode
+• Added some I/O schedulers
+• Anxiety
+• ZEN
+• SIO
+• FIOPS
+• Maple</code>
+
+<b>Note</b>
+• Flash everything at your own-risk
+
+<b>Support group</b>
+• @neelscosmos
+• @neelsdevelopment
