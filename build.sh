@@ -12,8 +12,20 @@ export Image="$(pwd)/out/arch/arm64/boot/Image.gz-dtb"
 export TC="/home/neel/Desktop/toolchain/"
 export VMTC="$(pwd)/clang"
 
+START(){
+	# Calculate compilation time
+	START=$(date +"%s")
+}
+#
+END(){
+	END=$(date +"%s")
+	DIFF=$((END - START))
+	echo -e "Kernel has been compiled successfully and it took $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
+	echo "Done!"
+}
+
 # Enforcing
-RUI="atoll_defconfig"
+RUI="AOSP_atoll_defconfig"
 clear
 echo "---------------------------"
 echo checking if bulding offline
@@ -60,6 +72,7 @@ echo "==============="
 echo "Building Clean"
 echo "==============="
 echo Clean build leftovers
+START
 make clean && make mrproper
 rm -rf out/arch/arm64/boot/Image.gz-dtb
 rm -rf KKRT/*.zip
@@ -84,6 +97,7 @@ if [ -f "$Image" ]; then
 	curl -F "document=@$i" --form-string "caption=$changelog" "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument?chat_id=${CHAT_ID}&parse_mode=HTML"
 	done
 	echo ""
+	END
 else
     echo "Kernel isnt compiled, letting Neel know"
     curl -F text="Realme 6 pro: Kernel is not compiled, come and check @neel0210" "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&parse_mode=Markdown"
