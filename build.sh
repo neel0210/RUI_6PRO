@@ -159,6 +159,28 @@ AOSP(){
 	    curl -F text="Realme 6 pro: AOSP Kernel is not compiled, come and check @neel0210" "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&parse_mode=Markdown"
 	fi
 }
+#
+FLASHING(){
+	echo "X......Checking if Kernel ZIP is present or not"
+	sleep 2
+	cd KKRT
+	ZIP=$(find *.zip)
+	if [ -f $ZIP ];
+	then
+		echo "X.....$ZIP is able to be flashed"
+	fi
+	cd ..
+	echo "X......Flashing Kernel"
+	echo "X......Rebooting to recovery"
+	echo "X......Make sure USB debugging is enabled"
+	echo "X......If enabled, press ANYKEY now to reboot to recovery"
+	read -n1 -r key
+	adb reboot recovery
+	echo "X......As soon as you boot into recovery, run ADB sideload and then press ANY KEY"
+	read -n1 -r key
+	adb sideload $ZIP
+	echo "X......Flashing Done!"
+}
 
 clear
 echo "                                                     "
@@ -174,7 +196,8 @@ echo "1 = Clean Build"
 echo "2 = Clean RUI"
 echo "3 = Clean AOSP"
 echo "4 = Update dependencies"
-echo "5 = exit"
+echo "5 = Flash kernel using adb"
+echo "6 = exit"
 read n
 
 if [ $n -eq 1 ]; then
@@ -194,6 +217,10 @@ if [ $n -eq 4 ]; then
 fi
 #
 if [ $n -eq 5 ]; then
+	FLASHING
+fi
+#
+if [ $n -eq 6 ]; then
 	echo "Quiting now"
 	sleep 2
 	exit
