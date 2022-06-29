@@ -73,6 +73,11 @@ echo "========================="
 echo "Remove old Kernel Build"
 echo "========================="
 rm -rf CORE/*.zip
+echo " "
+echo "====================================="
+echo "Give Perms to fetch-latest-wireguard"
+echo "====================================="
+chmod a+x scripts/fetch-latest-wireguard.sh
 ############################################
 # If other device make change here
 ############################################
