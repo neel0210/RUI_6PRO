@@ -34,7 +34,7 @@
 		qcom,mdss-dsi-dma-schedule-line = <5>;
 
 		qcom,mdss-dsi-lp11-init;
-		qcom,dsi-supported-dfps-list = <60 90 45>;
+		qcom,dsi-supported-dfps-list = <120 90 45>;
 		qcom,mdss-dsi-pan-enable-dynamic-fps;
 		qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 
@@ -88,7 +88,7 @@
 				qcom,mdss-dsi-v-back-porch = <10>;
 				qcom,mdss-dsi-v-front-porch = <1291>;
 				qcom,mdss-dsi-v-pulse-width = <10>;
-				qcom,mdss-dsi-panel-framerate = <60>;
+				qcom,mdss-dsi-panel-framerate = <120>;
 				qcom,mdss-dsi-pre-on-command=[
 						29 01 00 00 00 00 02 FF C0   /*modified for VDD_TP power*/
 						29 01 00 00 0A 00 02 48 1F
