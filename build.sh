@@ -82,6 +82,41 @@ chmod a+x scripts/fetch-latest-wireguard.sh
 ############################################
 clear
 
+DB(){
+	echo "==================="
+	echo "Building KRNL Clean"
+	echo "==================="
+	START
+	rm -rf out/arch/arm64/boot/Image.gz-dtb
+	rm -rf KKRT/*.zip
+	rm -rf KKRT/Image.gz-dtb
+	clear
+	echo "================"
+	echo "Compiling Kernel "
+	echo "================"
+	make $KERNEL O=out CC=clang
+	make -j$(nproc --all) O=out CC=clang
+	echo
+	if [ -f "$Image" ]; then
+		echo "Image compiled; packing it"
+		cp -r ./out/arch/arm64/boot/Image.gz-dtb ./KKRT/Image.gz-dtb
+		rm -rf KKRT/*.zip
+		cd KKRT
+		. zip.sh
+		cd ..
+		changelog=`cat KKRT/changelog.txt`
+		for i in KKRT/*.zip
+		do
+		curl -F "document=@$i" --form-string "caption=$changelog" "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument?chat_id=${CHAT_ID}&parse_mode=HTML"
+		done
+		echo ""
+		END
+	else
+	    echo "Kernel isnt compiled, letting Neel know"
+	    curl -F text="Realme 6 pro: RUI Kernel is not compiled, come and check @neel0210" "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&parse_mode=Markdown"
+	fi
+}
+
 KKRT(){
 	echo "==================="
 	echo "Building KRNL Clean"
@@ -155,9 +190,10 @@ echo "            coded by Neel0210  "
 echo "Select"
 echo "1 = Clean"
 echo "2 = Clean Build"
-echo "3 = Update dependencies"
-echo "4 = Flash kernel using adb"
-echo "5 = exit"
+echo "3 = Dirty Build"
+echo "4 = Update dependencies"
+echo "5 = Flash kernel using adb"
+echo "6 = exit"
 read n
 
 if [ $n -eq 1 ]; then
@@ -169,14 +205,18 @@ if [ $n -eq 2 ]; then
 fi
 #
 if [ $n -eq 3 ]; then
-	sudo bash scripts/bin
+	DB
 fi
 #
 if [ $n -eq 4 ]; then
-	FLASHING
+	sudo bash scripts/bin
 fi
 #
 if [ $n -eq 5 ]; then
+	FLASHING
+fi
+#
+if [ $n -eq 6 ]; then
 	echo "Quiting now"
 	sleep 2
 	exit
